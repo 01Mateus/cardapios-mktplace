@@ -12,7 +12,7 @@ import br.com.senai.cardapiosmktplaceapi.entity.Restaurante;
 import br.com.senai.cardapiosmktplaceapi.entity.enums.Status;
 
 @Repository
-public interface RestauranteRepository extends JpaRepository<Restaurante, Integer>{
+public interface RestaurantesRepository extends JpaRepository<Restaurante, Integer>{
 	
 	@Query(value =
 			"SELECT r "
@@ -25,7 +25,7 @@ public interface RestauranteRepository extends JpaRepository<Restaurante, Intege
 						+ "FROM Restaurante r "
 						+ "WHERE Upper(r.nome) LIKE Upper(:nome) "
 						+ "AND r.categoria = :categoria ")
-	public Page<Restaurante> listarPor(String nome, Categoria categoria, Pageable paginacao);
+	public Page<Restaurante> listarPor(String nome, Categoria categoria, java.awt.print.Pageable paginacao);
 	
 	@Query(value = 
 			"SELECT r "
@@ -44,4 +44,11 @@ public interface RestauranteRepository extends JpaRepository<Restaurante, Intege
 	@Query(value = 
 	"UPDATE Restaurante r SET r.status = :status WHERE r.id = :id")
 	public void atualizarPor(Integer id, Status status);
+	
+	@Query(value = 
+			"SELECT Count(r) "
+			+ "FROM Restaurante r "
+			+ "WHERE r.categoria.id = : idDaCategoria")
+	public Long contarPor(Integer idDaCategoria);
+	
 }

@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import br.com.senai.cardapiosmktplaceapi.repository.CategoriasRepository;
-import br.com.senai.cardapiosmktplaceapi.repository.RestauranteRepository;
+import br.com.senai.cardapiosmktplaceapi.repository.RestaurantesRepository;
 
 
 @SpringBootApplication
@@ -18,8 +18,8 @@ public class InitApp {
 	private CategoriasRepository categoriasRepository;
 	
 	@Autowired
-	private RestauranteRepository restaurantesRepository;
-	
+	private RestaurantesRepository restaurantesRepository;
+	                                             
 	public static void main(String[] args) {
 		SpringApplication.run(InitApp.class, args);
 	}
@@ -27,7 +27,7 @@ public class InitApp {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
-			System.out.println("Subiu");
+			System.err.println("Subiu");
 		};
 	}
 

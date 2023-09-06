@@ -66,7 +66,7 @@ public class Restaurante {
 	}
 	
 	@Transient
-	public boolean isAtiva() {
+	public boolean isAtivo() {
 		return getStatus() == Status.A;
 	}
 	
