@@ -1,8 +1,9 @@
 package br.com.senai.cardapiosmktplaceapi.service;
 
-import java.awt.print.Pageable;
+
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 
 import br.com.senai.cardapiosmktplaceapi.entity.Categoria;

@@ -30,4 +30,5 @@ public class NovaOpcaoDoCardapio {
 	
 	@NotNull(message = "A seção é obrigatória")
 	private Secao secao;
+	
 }

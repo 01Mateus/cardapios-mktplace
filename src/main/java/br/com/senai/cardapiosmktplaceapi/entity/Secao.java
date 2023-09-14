@@ -45,7 +45,7 @@ public class Secao {
 	}
 	
 	@Transient
-	public boolean isAtivo() {
+	public boolean isAtiva() {
 		return getStatus() == Status.A;
 	}
 }

@@ -1,6 +1,7 @@
 package br.com.senai.cardapiosmktplaceapi.repository;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,7 +25,7 @@ public interface RestaurantesRepository extends JpaRepository<Restaurante, Integ
 						+ "FROM Restaurante r "
 						+ "WHERE Upper(r.nome) LIKE Upper(:nome) "
 						+ "AND r.categoria = :categoria ")
-	public Page<Restaurante> listarPor(String nome, Categoria categoria, java.awt.print.Pageable paginacao);
+	public Page<Restaurante> listarPor(String nome, Categoria categoria, Pageable paginacao);
 	
 	@Query(value = 
 			"SELECT r "
