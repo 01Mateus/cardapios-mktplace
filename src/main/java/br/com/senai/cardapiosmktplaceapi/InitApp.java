@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import com.fasterxml.jackson.datatype.hibernate5.jakarta.Hibernate5JakartaModule;
+
 import br.com.senai.cardapiosmktplaceapi.repository.CategoriasRepository;
 import br.com.senai.cardapiosmktplaceapi.repository.RestaurantesRepository;
 
@@ -22,6 +24,10 @@ public class InitApp {
 	                                             
 	public static void main(String[] args) {
 		SpringApplication.run(InitApp.class, args);
+	}
+	
+	public Hibernate5JakartaModule jsonHibernate5Module() {
+		return new Hibernate5JakartaModule();
 	}
 	
 	@Bean

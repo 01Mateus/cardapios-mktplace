@@ -20,6 +20,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 	@Autowired
 	private CategoriasRepository repository;
 	
+	@Autowired
 	private RestaurantesRepository restaurantesRepository;
 	
 	@Override
