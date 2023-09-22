@@ -10,13 +10,9 @@ import br.com.senai.cardapiosmktplaceapi.entity.Categoria;
 import br.com.senai.cardapiosmktplaceapi.entity.Restaurante;
 import br.com.senai.cardapiosmktplaceapi.entity.enums.Status;
 import br.com.senai.cardapiosmktplaceapi.service.RestauranteService;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 
 @Service
-public class RestaurantesServiceProxy implements RestauranteService{
+public class RestauranteServiceProxy implements RestauranteService{
 
 	@Autowired
 	@Qualifier("restauranteServiceImpl")
@@ -24,14 +20,12 @@ public class RestaurantesServiceProxy implements RestauranteService{
 	
 	@Override
 	public Restaurante salvar(Restaurante restaurante) {
-		
 		return service.salvar(restaurante);
 	}
 
 	@Override
 	public void atualizarStatusPor(Integer id, Status status) {
 		this.service.atualizarStatusPor(id, status);
-		
 	}
 
 	@Override
@@ -41,12 +35,12 @@ public class RestaurantesServiceProxy implements RestauranteService{
 
 	@Override
 	public Restaurante buscarPor(Integer id) {
-		return buscarPor(id);
+		return service.buscarPor(id);
 	}
 
 	@Override
 	public Restaurante excluirPor(Integer id) {
-		return excluirPor(id);
+		return service.excluirPor(id);
 	}
 
 }

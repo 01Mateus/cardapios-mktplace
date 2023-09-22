@@ -70,8 +70,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 		Long qtdeDeRestaurantesVinculados = restaurantesRepository.contarPor(id);
 		Preconditions.checkArgument(qtdeDeRestaurantesVinculados == 0,
 				"Não é possível remover pois existem restaurantes vinculados");
-		this.repository.deleteById(categoriaParaExclusao.getId())
-		;
+		this.repository.deleteById(categoriaParaExclusao.getId());
 		return categoriaParaExclusao;
 	}
 
