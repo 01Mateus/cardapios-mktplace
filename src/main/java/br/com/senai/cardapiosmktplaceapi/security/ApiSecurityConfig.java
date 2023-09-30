@@ -47,7 +47,7 @@ public class ApiSecurityConfig {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(service);
 		authenticationProvider.setPasswordEncoder(passwordEncoder());
-		return authenticationProvider();
+		return authenticationProvider;
 	}
 
 	private UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource() {
@@ -62,29 +62,30 @@ public class ApiSecurityConfig {
 		return ccs;
 	}
 	
+	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 			.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests((request) -> 
 				request.
 					requestMatchers("/auth/**")
-					 .permitAll()
+					 	.permitAll()
 					.requestMatchers(HttpMethod.POST, "/cardapios/**")
 						.hasAnyAuthority("LOJISTA")
 					.requestMatchers(HttpMethod.PUT, "/cardapios/**")
 						.hasAnyAuthority("LOJISTA")
 					.requestMatchers(HttpMethod.PATCH, "/cardapios/**")
-							.hasAnyAuthority("LOJISTA")
-						.requestMatchers("/cardapios/**")
-							.hasAnyAuthority("CLIENTE", "LOJISTA")
-						.requestMatchers("/cardapios/**")
-							.hasAnyAuthority("LOJISTA")
-						.anyRequest().authenticated())
-					.sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-					.authenticationProvider(authenticationProvider())
-						.addFilterBefore(filtroDeAutenticacao, UsernamePasswordAuthenticationFilter.class)
-					.cors(c -> urlBasedCorsConfigurationSource());
-				return http.build();
+						.hasAnyAuthority("LOJISTA")
+					.requestMatchers("/cardapios/**")
+						.hasAnyAuthority("CLIENTE", "LOJISTA")
+					.requestMatchers("/cardapios/**")
+						.hasAnyAuthority("LOJISTA")
+					.anyRequest().authenticated())
+				.sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.authenticationProvider(authenticationProvider())
+					.addFilterBefore(filtroDeAutenticacao, UsernamePasswordAuthenticationFilter.class)
+				.cors(c -> urlBasedCorsConfigurationSource());
+			return http.build();
 	}
 	
 }

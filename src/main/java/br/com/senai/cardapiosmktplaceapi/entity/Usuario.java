@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "usuarios")
-@Entity(name = "Usuaro")
+@Entity(name = "Usuario")
 public class Usuario {
 	
 	@Id
