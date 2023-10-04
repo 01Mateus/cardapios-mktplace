@@ -33,7 +33,7 @@ public class CredencialDeAcesso implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {	
 		return getPermissoes();
 	}
-
+	
 	@Override
 	public String getPassword() {
 		return getSenha();
